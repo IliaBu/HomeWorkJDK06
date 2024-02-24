@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class MontyHall {
     private static final RandomDataGenerator random = new RandomDataGenerator();
     private static MontyHall montyHall;
-    HashMap<Integer, String> results;
+    HashMap<Double, String> results;
     ArrayList<Door> doors = new ArrayList<>();
 
     private MontyHall() {
@@ -27,11 +27,11 @@ public class MontyHall {
         return montyHall;
     }
 
-    public HashMap<Integer, String> getResults() {
+    public HashMap<Double, String> getResults() {
         return results;
     }
 
-    public void addResult(int iteration, String result) {
+    public void addResult(Double iteration, String result) {
         results.put(iteration, result);
     }
 

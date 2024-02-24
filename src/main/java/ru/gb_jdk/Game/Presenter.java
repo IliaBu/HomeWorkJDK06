@@ -14,7 +14,7 @@ public class Presenter {
     }
 
     public void start(){
-        for (int i = 0; i < iteration; i++){
+        for (double i = 0; i < iteration; i++){
             ArrayList<Door> doors = montyHall.getDoors();
             Boolean[] temp = new Boolean[3];
             montyHall.shuffleDoors();
@@ -28,23 +28,23 @@ public class Presenter {
                 j++;
             }
         }
-        view.printResult(percentWinsCount(), "Процент побед: ");
-        view.printResult(getInfo("Коза"), "Количество выбранных дверей с козой: ");
-        view.printResult(getInfo("Автомобиль"), "Количество выбранных дверей с автомобилем: ");
+        view.printResult(percentWinsCount(), "Процент побед: ", Colors.YELLOW);
+        view.printResultInt((int)getInfo("Коза"), "Поражения. Количество выбранных дверей с козой: ", Colors.RED);
+        view.printResultInt((int)getInfo("Автомобиль"), "Победы. Количество выбранных дверей с автомобилем: ", Colors.GREEN);
     }
 
-    private int percentWinsCount(){
-        int wins = montyHall.getResults().values().stream().filter(e -> e.toString().equalsIgnoreCase("автомобиль")).toList().size();
-        int allcounted = montyHall.getResults().size();
+    private double percentWinsCount(){
+        double wins = montyHall.getResults().values().stream().filter(e -> e.equalsIgnoreCase("автомобиль")).toList().size();
+        double allcounted = montyHall.getResults().size();
         return wins * 100 / allcounted;
     }
 
-    private int getInfo(String param){
-        int unit = 0;
+    private double getInfo(String param){
+        double unit = 0;
         for(String value : montyHall.getResults().values()){
             if(value.equalsIgnoreCase(param))
                 unit++;
         }
-        return  unit;
+        return unit;
     }
 }

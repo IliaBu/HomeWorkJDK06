@@ -2,8 +2,12 @@ package ru.gb_jdk.Game;
 
 public class View {
 
-    public void printResult(int result, String message){
-        System.out.printf(message + "%d\n",result);
+    public void printResult(double result, String message, Enum displayColor){
+        System.out.printf(displayColor + message + "%.2f\n",result, Colors.RESET);
+    }
+
+    public void printResultInt(int result, String message, Enum displayColor){
+        System.out.printf(displayColor + message + "%d\n",result, Colors.RESET);
     }
 
     public static void println(String message) {
